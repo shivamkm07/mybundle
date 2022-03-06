@@ -38,8 +38,9 @@ def getLatestRelease(repo):
     latest_release = ""
     resp = requests.get(daprReleaseUrl).text
     data = json.loads(resp)
-    print(data[0]['tag_name'])
-    return data[0]['tag_name']
+    version = data[0]['tag_name'].lstrip("v")
+    print(version)
+    return version
 
 def binaryFileName(fileBase):
     if(runtime_os == "windows"):
@@ -73,7 +74,7 @@ def unpack_archive(filePath,dir):
 
 def downloadBinary(repo, fileBase, version, out_dir):
     fileName = binaryFileName(fileBase)
-    url = f"https://github.com/{GITHUB_ORG}/{repo}/releases/download/{version}/{fileName}"
+    url = f"https://github.com/{GITHUB_ORG}/{repo}/releases/download/v{version}/{fileName}"
     downloadPath = os.path.join(out_dir,fileName)
 
     if not os.path.exists(out_dir):
@@ -132,17 +133,16 @@ def downloadDockerImages(dir):
     if runtime_os == "darwin":
         return
     image_dir = os.path.join(dir,IMAGE_DIR)
-    image_runtime_ver = runtime_ver.lstrip("v")
-    downloadDockerImage("daprio/dapr",image_runtime_ver,image_dir)
+    downloadDockerImage("daprio/dapr",runtime_ver,image_dir)
 
 def parseArguments():
     global runtime_os,runtime_arch,runtime_ver,dashboard_ver,cli_ver,ARCHIVE_DIR
     all_args = argparse.ArgumentParser()
     all_args.add_argument("--runtime_os",required=True,help="Runtime OS: [windows/linux/darwin]")
     all_args.add_argument("--runtime_arch",required=True,help="Runtime Architecture: [amd64/arm/arm64]")
-    all_args.add_argument("--runtime_ver",default="latest",help="Dapr Runtime Version: default=latest")
-    all_args.add_argument("--dashboard_ver",default="latest",help="Dapr Dashboard Version: default=latest")
-    all_args.add_argument("--cli_ver",default="latest",help="Dapr CLI Version: default=latest")
+    all_args.add_argument("--runtime_ver",default="latest",help="Dapr Runtime Version: default=latest e.g. 1.6.0")
+    all_args.add_argument("--dashboard_ver",default="latest",help="Dapr Dashboard Version: default=latest e.g. 0.9.0")
+    all_args.add_argument("--cli_ver",default="latest",help="Dapr CLI Version: default=latest e.g. 1.6.0")
     all_args.add_argument("--archive_dir",default="archive",help="Output Archive directory: default=archive")
 
     args = vars(all_args.parse_args())
