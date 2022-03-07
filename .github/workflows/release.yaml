@@ -12,6 +12,7 @@ on:
       - main
       - release-*
 
+
 jobs:
   build:
     name: Build ${{ matrix.target_os }}_${{ matrix.target_arch }} bundles
