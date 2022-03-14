@@ -93,6 +93,6 @@ Output should look like this:
 
 >Note: When initializing Dapr with the `--slim` flag only the Dapr runtime binary and the placement service binary are installed. An empty default components folder is created with no default configuration files. During `dapr run` user should use `--components-path` to point to a components directory with custom configurations files or alternatively place these files in the default directory. For Linux/MacOS, the default components directory path is `$HOME/.dapr/components` and for Windows it is `%USERPROFILE%\.dapr\components`.
 
-> To install Dapr CLI for further use, copy `daprbundle/dapr` binary to the desired location:
-   * For Linux/MacOS - `/usr/local/bin`s
+To install Dapr CLI for further use, copy `daprbundle/dapr` binary to the desired location:
+   * For Linux/MacOS - `/usr/local/bin`
    * For Windows, create a directory and add this to your System PATH. For example create a directory called `c:\dapr` and add this directory to your path, by editing your system environment variable.
