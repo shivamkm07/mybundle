@@ -25,6 +25,7 @@ Move to the bundle directory and run the following command:
 dapr init --from-dir .
 ```
 > For linux users, if you run your docker cmds with sudo, you need to use "**sudo dapr init**" 
+
 > If you are not running the above cmd from the bundle directory, provide the full path to bundle directory as input. e.g. assuming bundle directory path is $HOME/daprbundle, run `dapr init --from-dir $HOME/daprbundle` to have the same behavior.
 
 
