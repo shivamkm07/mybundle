@@ -49,7 +49,7 @@ This step creates the following defaults:
 2. component files in the components folder called `pubsub.yaml` and `statestore.yaml`.
 3. default config file `$HOME/.dapr/config.yaml` for Linux/MacOS or for Windows at `%USERPROFILE%\.dapr\config.yaml` to enable tracing on `dapr init` call. Can be overridden with the `--config` flag on `dapr run`.
 
-> Note: To emulate *online* dapr initialization using `dapr init`, you can also download redis/zipkin containers as follows:
+> Note: To emulate *online* dapr initialization using `dapr init`, you can also run redis/zipkin containers as follows:
 ```
 1. docker run --name "dapr_zipkin" --restart always -d -p 9411:9411 openzipkin/zipkin
 2. docker run --name "dapr_redis" --restart always -d -p 6379:6379 redislabs/rejson
