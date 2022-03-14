@@ -9,8 +9,6 @@ Each release of Dapr Installer Bundle includes various OSes and architectures. T
 3. To install Dapr CLI for further use, copy `daprbundle/dapr(.exe for windows)` binary to the desired location:
    * For Linux/MacOS - `/usr/local/bin`
    * For Windows, create a directory and add this to your System PATH. For example create a directory called `c:\dapr` and add this directory to your path, by editing your system environment variable.
-3. Move to the bundle directory and use the init command to initialize dapr:
-
 
 ### Install Dapr on your local machine (self-hosted)
 
